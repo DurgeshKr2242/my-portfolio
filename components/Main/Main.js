@@ -11,6 +11,7 @@ import { AnimatePresence, motion, useCycle } from "framer-motion";
 import About from "../About/About";
 import Contact from "../Contact/Contact";
 import Skills from "../About/Skills";
+import Mail from "../Contact/Mail";
 
 const sideVariantsAbout = {
   closed: {
@@ -121,16 +122,21 @@ const Main = () => {
               scale: 0,
               transition: { duration: 0.3 },
             }}
-            className="flex items-center justify-center w-full h-full "
+            className="flex flex-col items-center justify-center w-full h-full "
           >
             <motion.div
               initial="closed"
               animate="open"
               exit="closed"
               variants={sideVariantsContact}
-              className="flex flex-col gap-20"
+              className="flex flex-col items-center justify-center w-full h-full"
             >
-              <Contact />
+              <div className="flex justify-center items-center grow-[3] w-full">
+                <Contact />
+              </div>
+              <div className="grow-[1] w-full max-h-[350px] bg-black">
+                <Mail />
+              </div>
             </motion.div>
           </motion.div>
         )}
