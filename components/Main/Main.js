@@ -12,6 +12,7 @@ import About from "../About/About";
 import Contact from "../Contact/Contact";
 import Skills from "../About/Skills";
 import Mail from "../Contact/Mail";
+import Projects from "../Projects/Projects";
 
 const sideVariantsAbout = {
   closed: {
@@ -111,7 +112,7 @@ const Main = () => {
       <AnimatePresence>
         {activeScreen === "contact" && (
           <motion.div
-            initial={{ x: "100%", scale: 1 }}
+            initial={{ x: "100%", scale: 0 }}
             animate={{
               x: 0,
               scale: 1,
@@ -136,6 +137,37 @@ const Main = () => {
               </div>
               <div className="grow-[1] w-full max-h-[350px] bg-black">
                 <Mail />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {activeScreen === "projects" && (
+          <motion.div
+            initial={{ y: "100%", scale: 0 }}
+            animate={{
+              y: 0,
+              scale: 1,
+              transition: { type: "spring", stiffness: 100, duration: 0.2 },
+            }}
+            exit={{
+              y: "100%",
+              scale: 0,
+              transition: { duration: 0.3 },
+            }}
+            className="flex flex-col items-center justify-center w-full h-full "
+          >
+            <motion.div
+              initial="closed"
+              animate="open"
+              exit="closed"
+              variants={sideVariantsContact}
+              className="flex flex-col items-center justify-center w-full h-full"
+            >
+              <div className="flex items-center justify-center ">
+                <Projects />
               </div>
             </motion.div>
           </motion.div>
@@ -195,12 +227,19 @@ const Main = () => {
 
           <div className="absolute flex justify-around w-full bottom-4 ">
             <div className="flex flex-col items-center ">
-              <p>Projects</p>
-              <AiFillCaretDown />
+              <p
+                className="flex flex-col items-center px-2 transition-colors duration-300 cursor-pointer hover:bg-tWhiteSec hover:text-bgBlackSec"
+                onClick={() => setActiveScreen("projects")}
+              >
+                Projects
+                <AiFillCaretDown />
+              </p>
             </div>
             <div className="flex flex-col items-center ">
-              <p>Experiences</p>
-              <AiFillCaretDown />
+              <p className="flex flex-col items-center px-2 transition-colors duration-300 cursor-pointer hover:bg-tWhiteSec hover:text-bgBlackSec">
+                Experiences
+                <AiFillCaretDown />
+              </p>
             </div>
           </div>
         </div>
