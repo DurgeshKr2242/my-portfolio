@@ -1,8 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { FaGreaterThan } from "react-icons/fa";
-
+import emailjs from "@emailjs/browser";
 const Mail = () => {
   const [terminalActive, setTerminalActive] = useState(true);
+  const [senderName, setSenderName] = useState("");
+  const [senderMail, setSenderMail] = useState("");
+  const [senderFeedback, setSenderFeedback] = useState("");
+
+  const form = useRef();
+
+  const sendEmail = async (e) => {
+    e.preventDefault();
+
+    const sentMail = {
+      from_name: senderName,
+      sender_email: senderMail,
+      message: senderFeedback,
+    };
+
+    try {
+      const res = await emailjs.send(
+        process.env.NEXT_PUBLIC_SERVICE_ID,
+        process.env.NEXT_PUBLIC_TEMPLET_ID,
+        sentMail,
+        process.env.NEXT_PUBLIC_USER_ID
+      );
+
+      console.log(res);
+    } catch (error) {
+      console.log(error.text);
+    }
+  };
 
   return (
     <div className="flex flex-col gap-6 ">
@@ -26,7 +54,11 @@ const Mail = () => {
         {/* <p>TERMINAL</p> */}
       </div>
 
-      <form className="flex flex-col items-start w-full gap-4 pl-6">
+      <form
+        ref={form}
+        onSubmit={sendEmail}
+        className="flex flex-col items-start w-full gap-4 pl-6"
+      >
         <p className=" text-tBlue">{`/**feedback ~/@DURGESH`}</p>
         <div className="flex flex-col justify-start w-full">
           <label className="text-sm text-tWhiteSec" htmlFor="name">
@@ -35,7 +67,9 @@ const Mail = () => {
           <div className=" flex w-full gap-4 justify-start items-center text-[#B9A4E3]">
             <p className="">$</p>
             <input
-              name="name"
+              value={senderName}
+              onChange={(e) => setSenderName(e.target.value)}
+              name="from_name"
               id="name"
               type="text"
               placeholder="start typing..."
@@ -51,7 +85,9 @@ const Mail = () => {
           <div className=" flex gap-4 justify-start items-center text-[#B9A4E3]">
             <p className="">$</p>
             <input
-              name="email"
+              value={senderMail}
+              onChange={(e) => setSenderMail(e.target.value)}
+              name="sender_email"
               id="email"
               type="text"
               placeholder="start typing..."
@@ -67,7 +103,9 @@ const Mail = () => {
           <div className=" flex gap-4 justify-start items-center text-[#B9A4E3]">
             <p className="">$</p>
             <input
-              name="feedback"
+              value={senderFeedback}
+              onChange={(e) => setSenderFeedback(e.target.value)}
+              name="message"
               id="feedback"
               type="text"
               placeholder="start typing..."
@@ -76,7 +114,9 @@ const Mail = () => {
           </div>
         </div>
 
-        <button className="px-4 py-2 mt-6 bg-bgBlack">@submit</button>
+        <button type="submit" className="px-4 py-2 mt-6 bg-bgBlack">
+          @submit
+        </button>
       </form>
     </div>
   );

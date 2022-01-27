@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 import { FaGreaterThan } from "react-icons/fa";
-// import { motion, AnimatePresence } from "framer-motion";
-// import { useState } from "react/cjs/react.development";
 import { AiFillCaretDown } from "react-icons/ai";
-import { AiOutlineClose } from "react-icons/ai";
-
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
-
-import { AnimatePresence, motion, useCycle } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import About from "../About/About";
 import Contact from "../Contact/Contact";
 import Skills from "../About/Skills";
 import Mail from "../Contact/Mail";
 import Projects from "../Projects/Projects";
+import Experiences from "../Experiences/Experiences";
 
 const sideVariantsAbout = {
   closed: {
@@ -62,16 +58,6 @@ const Main = () => {
       <AnimatePresence>
         {activeScreen === "about" && (
           <motion.div
-            // initial={{ width: 0 }}
-            // animate={{
-            //   width: "100%",
-            //   scale: 1,
-            // }}
-            // exit={{
-            //   width: 0,
-            //   scale: 0,
-            //   transition: { duration: 0.3 },
-            // }}
             initial={{ x: "-100%", scale: 1 }}
             animate={{
               x: 0,
@@ -82,14 +68,12 @@ const Main = () => {
                 duration: 0.2,
               },
             }}
-            // transition={{ type: "spring", stiffness: 50, duration: 0.1 }}
             exit={{
               x: "-100%",
-              // width: 0,
               scale: 0,
               transition: { duration: 0.3 },
             }}
-            className="flex items-center justify-center w-full h-full "
+            className="flex items-center justify-center w-full h-screen "
           >
             <motion.div
               initial="closed"
@@ -123,7 +107,7 @@ const Main = () => {
               scale: 0,
               transition: { duration: 0.3 },
             }}
-            className="flex flex-col items-center justify-center w-full h-full "
+            className="flex flex-col items-center justify-center w-full h-screen "
           >
             <motion.div
               initial="closed"
@@ -166,7 +150,7 @@ const Main = () => {
               variants={sideVariantsContact}
               className="flex flex-col items-center justify-center w-full h-full"
             >
-              <div className="flex items-center justify-center ">
+              <div className="flex items-center justify-center w-full h-full ">
                 <Projects />
               </div>
             </motion.div>
@@ -174,8 +158,39 @@ const Main = () => {
         )}
       </AnimatePresence>
 
+      <AnimatePresence>
+        {activeScreen === "experiences" && (
+          <motion.div
+            initial={{ y: "100%", scale: 0 }}
+            animate={{
+              y: 0,
+              scale: 1,
+              transition: { type: "spring", stiffness: 100, duration: 0.2 },
+            }}
+            exit={{
+              y: "100%",
+              scale: 0,
+              transition: { duration: 0.3 },
+            }}
+            className="flex flex-col items-center justify-center w-full h-full "
+          >
+            <motion.div
+              initial="closed"
+              animate="open"
+              exit="closed"
+              variants={sideVariantsContact}
+              className="flex flex-col items-center justify-center w-full h-full"
+            >
+              <div className="flex items-center justify-center w-full h-full ">
+                <Experiences />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {activeScreen === "main" && (
-        <div className="flex items-center justify-between w-full h-full ">
+        <div className="flex items-center justify-between w-full h-screen ">
           {/* Left */}
 
           <div
@@ -236,7 +251,10 @@ const Main = () => {
               </p>
             </div>
             <div className="flex flex-col items-center ">
-              <p className="flex flex-col items-center px-2 transition-colors duration-300 cursor-pointer hover:bg-tWhiteSec hover:text-bgBlackSec">
+              <p
+                onClick={() => setActiveScreen("experiences")}
+                className="flex flex-col items-center px-2 transition-colors duration-300 cursor-pointer hover:bg-tWhiteSec hover:text-bgBlackSec"
+              >
                 Experiences
                 <AiFillCaretDown />
               </p>
