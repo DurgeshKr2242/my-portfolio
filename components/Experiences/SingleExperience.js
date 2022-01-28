@@ -15,8 +15,14 @@ const SingleExperience = ({ company, position, details, date }) => {
       <p className="flex items-center gap-4 -ml-1 text-tWhiteSec">
         <FiGitCommit /> {date}
       </p>
-      <div className="border-l-2 border-tWhiteSec/20">
-        <div className=" ml-8 border-[1px] border-tWhiteSec/20 rounded-lg px-6 py-4 mb-8 mt-4 w-[550px] hover:bg-bgBlackSec cursor-pointer">
+      <div className="w-full border-l-2 border-tWhiteSec/20">
+        <div
+          onClick={() => details && setDetailsOpen(!detailsOpen)}
+          className="tabletS:ml-8 -ml-4 border-[1px] border-tWhiteSec/20 bg-bgBlack rounded-lg px-6 py-4 mb-8 mt-4 
+          max-w-[550px] w-full hover:bg-bgBlackSec cursor-pointer"
+          // className="tabletS:ml-8 -ml-4 border-[1px] border-tWhiteSec/20 bg-bgBlack rounded-lg px-6 py-4 mb-8 mt-4
+          // w-[300px] mobileM:w-[360px] mobileL:w-[440px] tabletM:w-[550px] hover:bg-bgBlackSec cursor-pointer"
+        >
           <div className="flex justify-between">
             <div className="flex flex-col items-start gap-1">
               <p className="text-base tracking-wide uppercase text-tWhite">
@@ -26,7 +32,7 @@ const SingleExperience = ({ company, position, details, date }) => {
             </div>
             {details && (
               <button
-                className="px-4 bg-bgBlackSec border-[1px] border-tWhiteSec/20 text-sm rounded-xl"
+                className="mobileL:inline hidden px-4 bg-bgBlackSec border-[1px] border-tWhiteSec/20 text-sm rounded-xl"
                 onClick={() => setDetailsOpen(!detailsOpen)}
               >
                 <BiCode />

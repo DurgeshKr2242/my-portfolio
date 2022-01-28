@@ -2,7 +2,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="flex items-center gap-8 text-sm">
+    <div className="flex items-center gap-8 pt-20 text-sm tablet:pt-0">
       <div className="relative flex flex-col pr-4 border-r-[1px] border-tWhiteSec/10 text-tWhite">
         <div className="absolute top-0 w-10 h-24 bg-gradient-to-b from-bgBlack/100 to-bgBlack/10"></div>
         <div className="absolute bottom-0 w-10 h-24 bg-gradient-to-b from-bgBlack/10 to-bgBlack/100"></div>

@@ -11,6 +11,8 @@ module.exports = {
       laptopL: "1440px",
       laptop: "1024px",
       tablet: "768px",
+      tabletS: "524px",
+      tabletM: "624px",
       mobileL: "425px",
       mobileM: "375px",
       mobileS: "320px",

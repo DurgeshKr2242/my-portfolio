@@ -1,14 +1,15 @@
-import React, { useState } from "react";
-import { FaGreaterThan } from "react-icons/fa";
-import { AiFillCaretDown } from "react-icons/ai";
-import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { AnimatePresence, motion } from "framer-motion";
+import React, { useState } from "react";
+import { AiFillCaretDown } from "react-icons/ai";
+import { FaGreaterThan } from "react-icons/fa";
+import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import About from "../About/About";
-import Contact from "../Contact/Contact";
 import Skills from "../About/Skills";
+import Contact from "../Contact/Contact";
 import Mail from "../Contact/Mail";
-import Projects from "../Projects/Projects";
 import Experiences from "../Experiences/Experiences";
+import Projects from "../Projects/Projects";
+import CodeSection from "./CodeSection";
 
 const sideVariantsAbout = {
   closed: {
@@ -55,6 +56,8 @@ const Main = () => {
         </button>
       )}
 
+      {/* About */}
+
       <AnimatePresence>
         {activeScreen === "about" && (
           <motion.div
@@ -80,18 +83,20 @@ const Main = () => {
               animate="open"
               exit="closed"
               variants={sideVariantsAbout}
-              className="flex flex-row w-full h-full gap-20"
+              className="flex flex-col w-full h-full gap-10 tablet:gap-20 tablet:flex-row"
             >
               <div className="flex justify-center grow-[3]">
                 <About />
               </div>
-              <div className="grow-[1] max-w-xs">
+              <div className="grow-[1] w-full tablet:max-w-xs">
                 <Skills />
               </div>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Contact */}
 
       <AnimatePresence>
         {activeScreen === "contact" && (
@@ -119,13 +124,15 @@ const Main = () => {
               <div className="flex justify-center items-center grow-[3] w-full">
                 <Contact />
               </div>
-              <div className="grow-[1] w-full max-h-[350px] bg-black">
+              <div className="grow-[1] w-full max-h-[320px] mobileM:max-h-[350px] bg-black">
                 <Mail />
               </div>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Projects */}
 
       <AnimatePresence>
         {activeScreen === "projects" && (
@@ -158,6 +165,8 @@ const Main = () => {
         )}
       </AnimatePresence>
 
+      {/* Experiences */}
+
       <AnimatePresence>
         {activeScreen === "experiences" && (
           <motion.div
@@ -189,12 +198,14 @@ const Main = () => {
         )}
       </AnimatePresence>
 
+      {/* Main Screen */}
+
       {activeScreen === "main" && (
-        <div className="flex items-center justify-between w-full h-screen ">
+        <div className="flex items-center justify-center w-full h-screen tabletS:justify-between ">
           {/* Left */}
 
           <div
-            className="flex flex-col items-center px-2 transition-colors duration-300 rotate-90 cursor-pointer hover:bg-tWhiteSec hover:text-bgBlackSec"
+            className="absolute left-0 flex flex-col items-center px-2 transition-colors duration-300 rotate-90 cursor-pointer top-10 hover:bg-tWhiteSec hover:text-bgBlackSec tabletS:relative"
             onClick={() => setActiveScreen("about")}
           >
             <p>About</p>
@@ -211,7 +222,8 @@ const Main = () => {
               <p className="text-4xl tablet:text-6xl ">Durgesh Kumar</p>
               <p className="text-4xl text-tBlue">Web Developer</p>
             </div>
-            <div className="flex flex-col items-start gap-2">
+            <CodeSection />
+            {/* <div className="flex flex-col items-start gap-2">
               <p className="text-base lowercase text-tWhiteSec">
                 {`// Write a code below to continue`}
               </p>
@@ -225,13 +237,13 @@ const Main = () => {
                   className="text-2xl bg-transparent caret-[#B9A4E3] placeholder:text-[#b9a4e3a4] outline-none max-w-[240px]"
                 />
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Right */}
 
           <div
-            className="flex flex-col items-center -rotate-90"
+            className="absolute right-0 flex flex-col items-center px-2 transition-colors duration-300 -rotate-90 cursor-pointer top-10 hover:bg-tWhiteSec hover:text-bgBlackSec tabletS:relative"
             onClick={() => setActiveScreen("contact")}
           >
             <p>Contact</p>
@@ -240,7 +252,7 @@ const Main = () => {
 
           {/* BOTTOM */}
 
-          <div className="absolute flex justify-around w-full bottom-4 ">
+          <div className="absolute flex justify-between w-full tabletS:justify-around bottom-4 ">
             <div className="flex flex-col items-center ">
               <p
                 className="flex flex-col items-center px-2 transition-colors duration-300 cursor-pointer hover:bg-tWhiteSec hover:text-bgBlackSec"
