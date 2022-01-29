@@ -66,7 +66,6 @@ const Main = () => {
               x: 0,
               scale: 1,
               transition: {
-                type: "spring",
                 stiffness: 100,
                 duration: 0.2,
               },
@@ -74,7 +73,7 @@ const Main = () => {
             exit={{
               x: "-100%",
               scale: 0,
-              transition: { duration: 0.3 },
+              transition: { duration: 0.2 },
             }}
             className="flex items-center justify-center w-full h-screen "
           >
@@ -105,12 +104,12 @@ const Main = () => {
             animate={{
               x: 0,
               scale: 1,
-              transition: { type: "spring", stiffness: 100, duration: 0.2 },
+              transition: { stiffness: 100, duration: 0.2 },
             }}
             exit={{
               x: "100%",
               scale: 0,
-              transition: { duration: 0.3 },
+              transition: { duration: 0.2 },
             }}
             className="flex flex-col items-center justify-center w-full h-screen "
           >
@@ -141,12 +140,12 @@ const Main = () => {
             animate={{
               y: 0,
               scale: 1,
-              transition: { type: "spring", stiffness: 100, duration: 0.2 },
+              transition: { stiffness: 100, duration: 0.2 },
             }}
             exit={{
               y: "100%",
               scale: 0,
-              transition: { duration: 0.3 },
+              transition: { duration: 0.2 },
             }}
             className="flex flex-col items-center justify-center w-full h-full "
           >
@@ -174,12 +173,12 @@ const Main = () => {
             animate={{
               y: 0,
               scale: 1,
-              transition: { type: "spring", stiffness: 100, duration: 0.2 },
+              transition: { stiffness: 100, duration: 0.2 },
             }}
             exit={{
               y: "100%",
               scale: 0,
-              transition: { duration: 0.3 },
+              transition: { duration: 0.2 },
             }}
             className="flex flex-col items-center justify-center w-full h-full "
           >
