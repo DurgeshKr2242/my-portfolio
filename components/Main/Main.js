@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
@@ -77,6 +78,9 @@ const Main = () => {
             }}
             className="flex items-center justify-center w-full h-screen "
           >
+            <Head>
+              <title>About Durgesh</title>
+            </Head>
             <motion.div
               initial="closed"
               animate="open"
@@ -113,6 +117,9 @@ const Main = () => {
             }}
             className="flex flex-col items-center justify-center w-full h-screen "
           >
+            <Head>
+              <title>Contact Durgesh</title>
+            </Head>
             <motion.div
               initial="closed"
               animate="open"
@@ -149,6 +156,9 @@ const Main = () => {
             }}
             className="flex flex-col items-center justify-center w-full h-full "
           >
+            <Head>
+              <title>Durgesh Projects</title>
+            </Head>
             <motion.div
               initial="closed"
               animate="open"
@@ -182,6 +192,9 @@ const Main = () => {
             }}
             className="flex flex-col items-center justify-center w-full h-full "
           >
+            <Head>
+              <title>Durgesh Experiences</title>
+            </Head>
             <motion.div
               initial="closed"
               animate="open"
@@ -202,7 +215,9 @@ const Main = () => {
       {activeScreen === "main" && (
         <div className="flex items-center justify-center w-full h-screen tabletS:justify-between ">
           {/* Left */}
-
+          <Head>
+            <title>Durgesh Portfolio</title>
+          </Head>
           <div
             className="absolute left-0 flex flex-col items-center px-2 transition-colors duration-300 rotate-90 cursor-pointer top-10 hover:bg-tWhiteSec hover:text-bgBlackSec tabletS:relative"
             onClick={() => setActiveScreen("about")}

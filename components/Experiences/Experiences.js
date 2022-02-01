@@ -6,6 +6,12 @@ import SingleExperience from "./SingleExperience";
 
 const EXPERIENCE_DATA = [
   {
+    type: "Programs",
+    date: "Jan 2022 - Present · 1 mos",
+    position: "Developer Champ",
+    company: "SAWO Labs",
+  },
+  {
     type: "Society",
     date: "Aug 2021 - Present · 7 mos",
     position: "Executive",
@@ -82,7 +88,7 @@ const Experiences = () => {
 
   return (
     <div className="flex flex-col gap-8 mt-40 mb-40 tablet:px-28">
-      <p className="pl-4">{`// My top projects : `}</p>
+      <p className="pl-4">{`// My past experiences : `}</p>
 
       <div className="flex flex-col items-start gap-8">
         <div>
