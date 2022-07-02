@@ -51,9 +51,9 @@ const Main = () => {
       {activeScreen != "main" && (
         <button
           onClick={() => setActiveScreen("main")}
-          className="absolute z-10 top-5 right-5 hover:bg-tWhiteSec hover:text-bgBlackSec"
+          className="fixed z-10 px-2 py-1/2 top-5 right-5 bg-yellow text-bgBlack hover:bg-tWhiteSec hover:text-bgBlackSec"
         >
-          <HiOutlineArrowNarrowRight className="text-3xl font-bold " />
+          <HiOutlineArrowNarrowRight className="sticky top-0 text-3xl font-bold " />
         </button>
       )}
 
@@ -86,12 +86,12 @@ const Main = () => {
               animate="open"
               exit="closed"
               variants={sideVariantsAbout}
-              className="flex flex-col w-full h-full gap-10 tablet:gap-20 tablet:flex-row"
+              className="flex flex-col w-full h-full gap-10 tablet:flex-row tablet:justify-between"
             >
-              <div className="flex justify-center grow-[3]">
+              <div className="flex grow-[3] justify-center">
                 <About />
               </div>
-              <div className="grow-[1] w-full tablet:max-w-xs">
+              <div className="w-full grow-[1] tablet:max-w-xs">
                 <Skills />
               </div>
             </motion.div>
@@ -127,12 +127,12 @@ const Main = () => {
               variants={sideVariantsContact}
               className="flex flex-col items-center justify-center w-full h-full"
             >
-              <div className="flex justify-center items-center grow-[3] w-full">
+              <div className="flex w-full grow-[3] items-center justify-center">
                 <Contact />
               </div>
-              <div className="grow-[1] w-full max-h-[320px] mobileM:max-h-[350px] bg-black">
-                <Mail />
-              </div>
+              {/* <div className="max-h-[320px] w-full grow-[1] bg-black mobileM:max-h-[350px]">
+                  <Mail />
+                </div> */}
             </motion.div>
           </motion.div>
         )}
@@ -266,7 +266,7 @@ const Main = () => {
 
           {/* BOTTOM */}
 
-          <div className="absolute flex justify-between w-full tabletS:justify-around bottom-4 ">
+          <div className="absolute flex justify-between w-full bottom-4 tabletS:justify-around ">
             <div className="flex flex-col items-center ">
               <p
                 className="flex flex-col items-center px-2 transition-colors duration-300 cursor-pointer hover:bg-tWhiteSec hover:text-bgBlackSec"

@@ -8,7 +8,7 @@ const CodeSection = () => {
   useEffect(() => {
     if (codeInput.toLowerCase() === "downloadcv") {
       saveAs(
-        "https://drive.google.com/file/d/1OYHDd9Tu9nNdJ6Uug_vuz6I__LvGouKy/view?usp=sharing",
+        "https://drive.google.com/file/d/1wrYDaLTQSyshlioENT8XSNptPaxas134/view?usp=sharing",
         "resume.pdf"
       );
       setCodeInput("");
@@ -39,8 +39,12 @@ const CodeSection = () => {
 
         <ul className="absolute hidden px-2 py-2 mt-2 bg-black shadow-lg w-max group-hover:inline shadow-black/50">
           <li className="text-sm tabletS:text-base">
-            - Download CV / Resume :
+            - Download CV :
             <span className="px-2 py-1 bg-gray-700 rounded-lg">downloadCv</span>
+          </li>
+          <li className="text-sm tabletS:text-base">
+            - My Personal Blog Site :
+            <span className="px-2 py-1 bg-gray-700 rounded-lg">blog</span>
           </li>
         </ul>
       </div>
