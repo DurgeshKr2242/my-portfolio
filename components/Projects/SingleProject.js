@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
 import { CgChevronRight } from "react-icons/cg";
 
 const SingleProject = ({
@@ -137,31 +138,72 @@ const SingleProject = ({
             </li>
 
             <li className="w-full">
-              {active === 2 && (
-                <ul className="flex flex-col gap-1">
-                  {techUsed.map((item, i) => {
-                    return (
-                      <li key={i}>
-                        <span>-</span> {item}
-                      </li>
-                    );
-                  })}
-                </ul>
-              )}
+              <AnimatePresence>
+                {active === 2 && (
+                  <ul className="flex flex-col gap-1">
+                    {techUsed.map((item, i) => {
+                      return (
+                        <motion.li
+                          variants={{
+                            hidden: {
+                              x: -100,
+                              opacity: 0,
+                            },
+                            visible: (i) => ({
+                              x: 0,
+                              opacity: 1,
+                              transition: {
+                                delay: i * 0.05,
+                              },
+                            }),
+                          }}
+                          initial="hidden"
+                          animate="visible"
+                          custom={i}
+                          key={item}
+                          className="pl-2"
+                        >
+                          <span>-</span> {item}
+                        </motion.li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </AnimatePresence>
             </li>
-
             <li className="w-full">
-              {active === 1 && (
-                <ul className="flex flex-col gap-1">
-                  {featuresImplemented.map((item, i) => {
-                    return (
-                      <li key={i} className="pl-2">
-                        <span>-</span> {item}
-                      </li>
-                    );
-                  })}
-                </ul>
-              )}
+              <AnimatePresence>
+                {active === 1 && (
+                  <ul className="flex flex-col gap-1">
+                    {featuresImplemented.map((item, i) => {
+                      return (
+                        <motion.li
+                          variants={{
+                            hidden: {
+                              x: -100,
+                              opacity: 0,
+                            },
+                            visible: (i) => ({
+                              x: 0,
+                              opacity: 1,
+                              transition: {
+                                delay: i * 0.05,
+                              },
+                            }),
+                          }}
+                          initial="hidden"
+                          animate="visible"
+                          custom={i}
+                          key={item}
+                          className="pl-2"
+                        >
+                          <span>-</span> {item}
+                        </motion.li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </AnimatePresence>
             </li>
           </ul>
         </div>
